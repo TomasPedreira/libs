@@ -7,9 +7,9 @@ typedef struct _node * node;
 node new_node(void * elem, node next);
 
 void node_delete(node n);
-void node_elem_delete(node n);
+void node_elem_delete(node n, void (*elem_delete)(void *));
 
-void * node_next(node n);
+node node_next(node n);
 
 void * node_get(node n);
 

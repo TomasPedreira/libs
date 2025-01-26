@@ -22,9 +22,9 @@ void tuple_delete(tuple t){
     free(t);
 }
 
-void tuple_elem_delete(tuple t){
-    free(t->a);
-    free(t->b);
+void tuple_elem_delete(tuple t, void (*elem_delete)(void *)){
+    elem_delete(t->a);
+    elem_delete(t->b);
     free(t);
 }
 
