@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -I.
 SRC_DIR = .
-LIB_DIR = libstring_t libtuple_t liblist_t libiterator_t
+LIB_DIR = libstring_t libtuple_t liblist_t libiterator_t libnode_t
 SRC = $(wildcard $(SRC_DIR)/*.c) $(foreach dir, $(LIB_DIR), $(wildcard $(dir)/*.c))
 OBJ = $(SRC:.c=.o)
 TARGET = program

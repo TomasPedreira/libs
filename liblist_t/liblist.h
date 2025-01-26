@@ -6,7 +6,7 @@
 typedef struct _list * list;
 
 
-void * new_list(void * a, void * b);
+list new_list(void * a, void * b);
 
 
 
