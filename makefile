@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-INCLUDE_DIRS = . libstring_t libtuple_t libiterator_t libnode_t 
+INCLUDE_DIRS = . libstring_t libtuple_t libiterator_t libnode_t liblist_t
 INCLUDES = $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 SRC_DIR = .
 LIB_DIRS = libstring_t libtuple_t liblist_t libiterator_t libnode_t 

@@ -79,6 +79,9 @@ void list_insert_tail (list l, void * elem){
     if (l->tail != NULL){
         node_set_next(l->tail, n);
     }
+    if (l->len == 0){
+        l->head = n;
+    }
     l->tail = n;
     l->len++;
 }
@@ -119,6 +122,82 @@ void list_insert (list l, void * elem, int pos){
     }
 }
 
+/******************************************
+ * @brief Pushes an element to the list
+ * @param l The list
+ * @param elem The element to be pushed
+ */
+void list_push(list l, void * elem){
+    list_insert_tail(l, elem);
+}
+
+/******************************************
+ * @brief Removes the head from the list
+ * @param l The list
+ * @param elem_delete The function to delete the element
+ */
+void list_remove_head(list l, void (*elem_delete)(void *)){
+    node n = l->head;
+    l->head = node_next(n);
+    node_elem_delete(n, elem_delete);
+    l->len--;
+}
+
+/******************************************
+ * @brief Removes the tail from the list
+ * @param l The list
+ * @param elem_delete The function to delete the element
+ */
+void list_remove_tail(list l, void (*elem_delete)(void *)){
+    node n = l->head;
+    for (size_t i = 1; i < l->len-2; i++){
+        n = node_next(n);
+    }
+    node tail = node_next(n);
+    node_set_next(n, NULL);
+    node_elem_delete(tail, elem_delete);
+    l->tail = n;
+    l->len--;
+}
+
+/*******************************************
+ * @brief Removes the posth node from the list
+ * @param l The list
+ * @param pos The position
+ * @param elem_delete The function to delete the element
+ */
+void list_remove_midle(list l, size_t pos, void (*elem_delete)(void *)){
+    node n = l->head;
+    for (size_t i = 1; i < pos-1; i++){
+        n = node_next(n);
+    }
+    node remove_node = node_next(n);
+    node_set_next(n, node_next(remove_node));
+    node_elem_delete(remove_node, elem_delete);
+    l->len--;
+}
+
+void list_remove_pos (list l, size_t pos, void (*elem_delete)(void *)){
+    if (pos >= l->len){
+        return;
+    }
+    if (pos == 0){
+        list_remove_head(l, elem_delete);
+    } else if (pos == l->len-1){
+        list_remove_tail(l, elem_delete);
+    } else {
+        list_remove_midle(l, pos, elem_delete);
+    }
+
+    
+}
+node list_get_pos(list t, size_t pos){
+    node n = t->head;
+    for (size_t i = 0; i < pos; i++){
+        n = node_next(n);
+    }
+    return n;
+}
 
 /******************************************
  * @brief Creates an iterator for the list
