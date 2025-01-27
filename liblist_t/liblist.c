@@ -111,6 +111,7 @@ void list_insert_pos (list l, void * elem, size_t pos){
  * @brief Inserts a node in the list
  * @param l The list
  * @param elem The element to be inserted
+ * @param pos The position - 0 - head, 1 - tail, other - pos
  */
 void list_insert (list l, void * elem, int pos){
     if (pos == 0){
@@ -139,7 +140,10 @@ void list_push(list l, void * elem){
 void list_remove_head(list l, void (*elem_delete)(void *)){
     node n = l->head;
     l->head = node_next(n);
-    node_elem_delete(n, elem_delete);
+    if (elem_delete != NULL)
+        node_elem_delete(n, elem_delete);
+    else
+        node_delete(n);
     l->len--;
 }
 
@@ -155,7 +159,10 @@ void list_remove_tail(list l, void (*elem_delete)(void *)){
     }
     node tail = node_next(n);
     node_set_next(n, NULL);
-    node_elem_delete(tail, elem_delete);
+    if (elem_delete != NULL)
+        node_elem_delete(tail, elem_delete);
+    else
+        node_delete(tail);
     l->tail = n;
     l->len--;
 }
@@ -173,7 +180,10 @@ void list_remove_midle(list l, size_t pos, void (*elem_delete)(void *)){
     }
     node remove_node = node_next(n);
     node_set_next(n, node_next(remove_node));
-    node_elem_delete(remove_node, elem_delete);
+    if (elem_delete != NULL)
+        node_elem_delete(remove_node, elem_delete);
+    else
+        node_delete(remove_node);
     l->len--;
 }
 

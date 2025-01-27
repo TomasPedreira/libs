@@ -16,6 +16,7 @@ int main() {
         node n = list_get_pos(l, i);
         printf("%d\n", (int)node_get(n));
     }
+    list_remove_pos(l, 13, NULL);
     iterator it = list_iter(l);
     while (iterator_hasnext(it)){
         printf("%d\n", (int)iterator_next(it));

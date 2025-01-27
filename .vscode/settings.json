@@ -2,6 +2,7 @@
     "files.associations": {
         "libstring.h": "c",
         "libnode.h": "c",
-        "xutility": "c"
+        "xutility": "c",
+        "libiterator.h": "c"
     }
 }
