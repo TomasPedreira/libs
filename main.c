@@ -25,6 +25,6 @@ int main() {
     }
     iterator_delete(it);
     list_elem_delete(l, NULL);
-    printf("Finished m8\n");
+    printf("Finished m8 no way\n");
     return 0;
 }
