@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "libstring.h": "c"
+        "libstring.h": "c",
+        "libnode.h": "c"
     }
 }

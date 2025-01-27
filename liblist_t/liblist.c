@@ -95,7 +95,7 @@ void list_insert_pos (list l, void * elem, size_t pos){
         n = node_next(n);
     }
     node new_n = new_node(elem, node_next(n));
-    if (new_node == NULL){
+    if (new_n == NULL){
         return;
     }
     node_set_next(n, new_n);
@@ -109,13 +109,13 @@ void list_insert_pos (list l, void * elem, size_t pos){
  * @param l The list
  * @param elem The element to be inserted
  */
-void list_insert (list l, void * elem, size_t pos){
+void list_insert (list l, void * elem, int pos){
     if (pos == 0){
         list_insert_head(l, elem);
     } else if (pos == -1){
         list_insert_tail(l, elem);
     } else {
-        list_insert_midle(l,elem,pos);
+        list_insert_pos(l,elem,pos);
     }
 }
 

@@ -34,9 +34,10 @@ void node_delete(node n){
 /***********************************
  * @brief Deletes the element of a node and the node
  * @param n The node to be deleted
+ * @param elem_delete The function to delete the element
  */
 void node_elem_delete(node n, void (*elem_delete)(void *)){
-    free(n->elem);
+    elem_delete(n->elem);
     free(n);
 }
 

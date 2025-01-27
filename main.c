@@ -1,13 +1,17 @@
-#include "libstring_t/libstring.h"
+#include <libiterator.h>
+#include <libstring.h>
+#include <libtuple.h>
+#include <libnode.h>
+#include <liblist.h>
 #include <stdio.h>
 
 int main() {
-    String s = new_string("Hello");
-    str_pop(s, 1);
-    printf("%s\n", str_get(s));
-    str_cat(s, " World!");
-    printf("%s\n", str_get(s));  
-    printf("%d\n", str_length(s));
-    str_delete(s);
+    // list l = new_list();
+    for (int i = 0; i < 20; i++){
+        printf("%d\n", i);
+
+    }
+
+
     return 0;
 }
