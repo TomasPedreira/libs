@@ -4,5 +4,7 @@
         "libnode.h": "c",
         "xutility": "c",
         "libiterator.h": "c"
-    }
+    },
+    "doki.background.enabled": false,
+    "doki.wallpaper.enabled": false
 }

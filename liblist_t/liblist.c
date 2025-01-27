@@ -41,7 +41,10 @@ void list_elem_delete(list l, void (*elem_delete)(void *)){
     node n = l->head;
     while (n != NULL){
         node next = node_next(n);
-        node_elem_delete(n, elem_delete);
+        if (elem_delete != NULL)
+            node_elem_delete(n, elem_delete);
+        else
+            node_delete(n);
         n = next;
     }
     l->head = NULL;
@@ -187,6 +190,12 @@ void list_remove_midle(list l, size_t pos, void (*elem_delete)(void *)){
     l->len--;
 }
 
+/******************************************
+ * @brief Removes the posth node from the list
+ * @param l The list
+ * @param pos The position
+ * @param elem_delete The function to delete the element
+ */
 void list_remove_pos (list l, size_t pos, void (*elem_delete)(void *)){
     if (pos >= l->len){
         return;
@@ -201,6 +210,13 @@ void list_remove_pos (list l, size_t pos, void (*elem_delete)(void *)){
 
     
 }
+
+/******************************************
+ * @brief Gets the posth node from the list
+ * @param l The list
+ * @param pos The position
+ * @return The node
+ */
 node list_get_pos(list t, size_t pos){
     node n = t->head;
     for (size_t i = 0; i < pos; i++){

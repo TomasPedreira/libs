@@ -86,7 +86,7 @@ int str_contains(String s,char *str){
 }
 
 /**************************************************************
- * @brief Pop n characters from the nth index of the string (if 0 pop last)
+ * @brief Pop n characters from the nth index of the string (if <0 pop last)
  * @param s String
  * @param n Index of character to pop
  * @return 0 if success, -1 if n > s->len

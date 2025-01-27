@@ -7,8 +7,10 @@
 
 int main() {
     list l = new_list();
+
+    printf("size of void* %zu\n", sizeof(void*));
+    printf("size of integer %zu\n", sizeof(int));
     for (int i = 0; i < 20; i++){
-        // printf("%d\n", i);
         list_push(l, (void*)i);
     }
     list_insert(l, (void*)100, 14);
@@ -22,6 +24,7 @@ int main() {
         printf("%d\n", (int)iterator_next(it));
     }
     iterator_delete(it);
-    list_delete(l);
+    list_elem_delete(l, NULL);
+    printf("Finished m8\n");
     return 0;
 }
